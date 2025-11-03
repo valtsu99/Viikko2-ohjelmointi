@@ -31,12 +31,12 @@ def main():
     # Muunnetaan varaus osiin
     varausnumero = int(varaus_tiedot[0])
     tuntihinta = float(varaus_tiedot[5])
-    maksettu = varaus_tiedot[6].strip().lower() == "kyllä"
+    maksettu = str(varaus_tiedot[6]).strip().lower() == "true"
     
     from datetime import datetime
-    paiva = datetime.strptime(varaus_tiedot[2], "%d.%m.%Y")
+    paiva = datetime.strptime(varaus_tiedot[2], "%Y-%m-%d")
     suomalainenpaiva = paiva.strftime("%d.%m.%Y")
-    aika = datetime.strptime(varaus_tiedot[3], "%H.%M")
+    aika = datetime.strptime(varaus_tiedot[3], "10:00")
     suomalainenaika = aika.strftime("%H.%M")
     
     # Tulostetaan tiedot
@@ -51,6 +51,7 @@ def main():
     print(f"Kohde: {varaus_tiedot[7]}")
     print(f"Puhelin: {varaus_tiedot[8]}")
     print(f"Sähköposti: {varaus_tiedot[9]}")
+    
     
     
 if __name__ == "__main__":
